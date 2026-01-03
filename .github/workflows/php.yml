@@ -1,0 +1,24 @@
+name: Deploy PHP site to Hostinger
+
+on:
+ push:
+ branches: [ main ] # adapte à ta branche
+
+jobs:
+ deploy:
+ runs-on: ubuntu-latest
+
+ steps:
+ - name: Checkout repository
+ uses: actions/checkout@v4
+
+ # ici tu peux ajouter tests, linters, etc.
+
+ - name: Deploy via FTP
+ uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+ with:
+ server: ${{ secrets.FTP_HOST }}
+ username: ${{ secrets.FTP_USER }}
+ password: ${{ secrets.FTP_PASS }}
+ local-dir: ./
+ server-dir: public_html/
