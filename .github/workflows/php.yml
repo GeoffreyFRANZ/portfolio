@@ -13,12 +13,11 @@ jobs:
  uses: actions/checkout@v4
 
  # ici tu peux ajouter tests, linters, etc.
-
- - name: Deploy via FTP
+- name: Deploy via FTP
  uses: SamKirkland/FTP-Deploy-Action@v4.3.5
  with:
- server: ${{ secrets.FTP_HOST }}
- username: ${{ secrets.FTP_USER }}
- password: ${{ secrets.FTP_PASS }}
- local-dir: ./
- server-dir: public_html/
+  server: ${{ secrets.FTP_HOST }}
+  username: ${{ secrets.FTP_USER }}
+  password: ${{ secrets.FTP_PASS }}
+  local-dir: ./
+  server-dir: public_html/
