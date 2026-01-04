@@ -23,5 +23,5 @@ jobs:
           port: 65002
           password: ${{ secrets.HOSTINGER_PASSWORD }}
           local_path: './'
-          remote_path: 'public_html/portfolio/'
+          remote_path: 'public_html/'
           ssh_private_key: ${{ secrets.HOSTINGER_SSH }}
