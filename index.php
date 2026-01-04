@@ -215,8 +215,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="holo-divider"></div>
     </div>
     <div class="project-content">
-        <div class="project-image">
-        </div>
         <div class="project-story">
             <h3>Présentation du projet</h3>
 
