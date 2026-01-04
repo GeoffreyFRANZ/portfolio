@@ -1,22 +1,27 @@
-name: Deploy PHP site to Hostinger
+name: Deploy to Hostinger
 
 on:
- push:
-  branches: [ "main" ]
+  push:
+    branches:
+      - main
 
 jobs:
- deploy:
-  runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-latest
+  
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      # Si tu as besoin de build (npm, composer, etc.), ajoute les étapes ici
 
-  steps:
-   - name: Checkout repository
-     uses: actions/checkout@v4
-
-   - name: Deploy via FTP
-     uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-     with:
-      server: ${{ secrets.FTP_HOST }}
-      username: ${{ secrets.FTP_USER }}
-      password: ${{ secrets.FTP_PASS }}
-      local-dir: ./
-      server-dir: public_html/
+      - name: Deploy via SFTP to Hostinger
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          username: ${{ secrets.HOSTINGER_USERNAME }}
+          server: ${{ secrets.HOSTINGER_HOST }}
+          port: 22
+          password: ${{ secrets.HOSTINGER_PASSWORD }}
+          local_path: './'
+          remote_path: 'public_html'
+          args: '-o ConnectTimeout=30'
