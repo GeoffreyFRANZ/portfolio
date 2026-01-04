@@ -189,15 +189,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="project-col">
                     <h3>Backend</h3>
                     <ul>
-                        <li>Workflow multi‑étapes complet (soumission → validation → création compte)</li>
-                        <li>Stockage SQL des candidatures et des pièces jointes</li>
-                        <li>Création automatique des comptes via Microsoft Entra (Azure AD)</li>
-                        <li>Attribution dynamique des rôles et permissions</li>
-                        <li>Endpoints sécurisés pour connecter d’autres applications internes</li>
-                        <li>Système de statuts : à traiter, accepté, refusé, modifié</li>
-                        <li>Audit log complet (actions, transitions, modifications)</li>
-                        <li>Intégration SharePoint pour le stockage des CV et documents</li>
-                        <li>Intégration AWS existante (Lambda / SQS) pour certaines automatisations</li>
+                        <li>Workflow multi‑étapes (soumission → validation → création compte)</li>
+                        <li>SQL : candidatures + pièces jointes</li>
+                        <li>Provisioning automatique via Microsoft Entra (Azure AD)</li>
+                        <li>Rôles & permissions dynamiques</li>
+                        <li>Endpoints sécurisés (intégrations internes)</li>
+                        <li>Statuts : à traiter / accepté / refusé / modifié</li>
+                        <li>Audit log complet (actions & transitions)</li>
+                        <li>SharePoint : stockage CV & documents</li>
+                        <li>AWS : Lambda / SQS (automatisations)</li>
+
                     </ul>
                 </div>
             </div>

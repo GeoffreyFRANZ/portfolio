@@ -359,9 +359,9 @@ html, body {
 }
 .d-column {
     display: flex;
-    flex-direction: row;
+    /*flex-direction: row;*/
     flex-wrap: wrap;
-    width: 55%;
+    width: 100%;
 }
 /* Colonnes */
 .project-columns {
@@ -775,7 +775,6 @@ html, body {
 .project-col ul {
     margin: 0;
     padding-left: 1.1rem;
-    column-width: 150px;
     column-gap: 1rem;
 }
 
