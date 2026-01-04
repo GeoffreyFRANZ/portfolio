@@ -24,4 +24,4 @@ jobs:
           password: ${{ secrets.HOSTINGER_PASSWORD }}
           local_path: './'
           remote_path: 'public_html'
-          args: '-o ConnectTimeout=30'
+          ssh_private_key: ${{ secrets.HOSTINGER_SSH }}
