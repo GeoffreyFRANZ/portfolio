@@ -8,11 +8,11 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-  
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       # Si tu as besoin de build (npm, composer, etc.), ajoute les étapes ici
 
       - name: Deploy via SFTP to Hostinger
