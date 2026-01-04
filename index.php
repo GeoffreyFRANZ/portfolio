@@ -61,7 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
 
-<canvas id="cosmic-bg"></canvas>
 <aside class="sidebar">
     <nav>
         <a href="#" data-target="header">Introduction</a>
