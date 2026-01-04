@@ -711,14 +711,11 @@
 
 .project-block {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px 0;
-    box-sizing: border-box;
+    padding:  1rem 0;
     border-bottom: 1px solid rgba(0, 150, 255, 0.1);
     scroll-snap-align: start;
     overflow-y: auto;
+    margin-bottom: 11rem;
 }
 
 .project-content {
@@ -734,11 +731,6 @@
     width: 100%;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-.project-story {
-    font-size: 0.9rem;
-
 }
 
 .project-story p {
