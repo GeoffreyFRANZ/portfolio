@@ -20,7 +20,8 @@ jobs:
         with:
           username: ${{ secrets.HOSTINGER_USERNAME }}
           server: ${{ secrets.HOSTINGER_HOST }}
-          port: 65002
+          protocol: sftp
+          port: 22
           password: ${{ secrets.HOSTINGER_PASSWORD }}
           local_path: './'
           remote_path: 'public_html'
