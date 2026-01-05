@@ -197,9 +197,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             par couche.</p>
                     </article>
                 </section>
-                <span style="color: white; margin: 0.5rem; font-size: smaller; font-style: italic">
-                    * Le réseau neuronal est dispo dans la section compétences et sur mon Github
-                </span>
             </article>
             <article>
                 <header>
