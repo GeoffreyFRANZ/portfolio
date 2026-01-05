@@ -545,6 +545,9 @@
     backdrop-filter: blur(4px);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+.concept-card *, .concept-card {
+    background: rgba(6, 12, 32, 0.55);
+}
 
 .concept-card:hover {
     transform: translateY(-4px);
