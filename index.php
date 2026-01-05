@@ -477,5 +477,78 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </main>
 </div>
 <script src="scripts.min.js"></script>
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Geoffrey",
+        "jobTitle": "Développeur Back-End",
+        "url": "https://geoffreyfranz.fr",
+        "sameAs": [
+            "https://github.com/ton-profil",
+            "https://www.linkedin.com/in/ton-profil"
+        ]
+    }
+</script>
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Person",
+                "@id": "https://geoffreyfranz.fr/person",
+                "name": "Geoffrey",
+                "jobTitle": "Développeur Back-End",
+                "url": "https://geoffreyfranz.fr",
+                "sameAs": [
+                    "https://github.com/ton-profil",
+                    "https://www.linkedin.com/in/ton-profil"
+                ]
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://geoffreyfranz.fr/website",
+                "url": "https://geoffreyfranz.fr",
+                "name": "Portfolio de Geoffrey",
+                "publisher": { "@id": "https://geoffreyfranz.fr/person" }
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://geoffreyfranz.fr/page",
+                "url": "https://geoffreyfranz.fr",
+                "name": "Portfolio de Geoffrey",
+                "isPartOf": { "@id": "https://geoffreyfranz.fr/website" },
+                "about": { "@id": "https://geoffreyfranz.fr/person" },
+                "hasPart": [
+                    {
+                        "@type": "WebPageElement",
+                        "name": "Introduction"
+                    },
+                    {
+                        "@type": "WebPageElement",
+                        "name": "Projects"
+                    },
+                    {
+                        "@type": "WebPageElement",
+                        "name": "Skills"
+                    },
+                    {
+                        "@type": "WebPageElement",
+                        "name": "Contact"
+                    }
+                ]
+            },
+            {
+                "@type": "CreativeWork",
+                "@id": "https://geoffreyfranz.fr/projet-fede",
+                "name": "Projet FEDE",
+                "description": "Développement back-end, front-end et infrastructure pour la Fédération Européenne des Écoles.",
+                "creator": { "@id": "https://geoffreyfranz.fr/person" },
+                "keywords": ["Symfony", "React", "AWS", "Docker"]
+            }
+        ]
+    }
+</script>
 </body>
 </html>
