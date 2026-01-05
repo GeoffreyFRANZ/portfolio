@@ -381,7 +381,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </header>
                 <section class="project-content">
                     <figure>
-                        <img src="form-step1.png" alt="Formulaire intervenants – Étape 1">
+                        <img src="img.png" alt="Formulaire intervenants – Étape 1">
                     </figure>
                     <article class="project-story">
                         <h4>Présentation du projet</h4>
