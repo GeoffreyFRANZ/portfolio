@@ -55,11 +55,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Développeur back‑end spécialisé en PHP, Node.js, Docker et AWS.
-     Découvrez mes projets professionnels, mon parcours et ma transition vers l’IA.
-     Disponible pour une alternance en 2026.">
+    <meta name="description" content="Développeur back‑end spécialisé en PHP, Node.js et Docker.
+    Découvrez mes projets, mon parcours et ma transition vers l’IA. Alternance 2026">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.min.css">
+    <title>Geoffrey Franz — Développeur Back‑End PHP & Node.js</title>
 </head>
 <body>
 <div id="container">
