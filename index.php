@@ -57,6 +57,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Geoffrey Franz, développeur fullstack. Front, back, Docker, AWS et projets web
      en production.">
+    <meta property="og:title" content="Geoffrey Franz — Développeur Fullstack">
+    <meta property="og:description" content="Développeur fullstack. Front, back, Docker, AWS et projets web en production.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://geoffreyfranz.fr">
+    <meta property="og:image" content="https://geoffreyfranz.fr/assets/img/og-image.png">
+    <meta property="og:locale" content="fr_FR">
     <link rel="canonical" href="https://geoffreyfranz.fr/" />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.min.css">
