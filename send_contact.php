@@ -28,8 +28,8 @@ try {
         $mail->Port       =  465;
         $mail->CharSet    = 'UTF-8';
         // Destinataires
-        $mail->setFrom($_ENV['SMTP_FROM'], $_ENV['SMTP_FROM_NAME']);
-        $mail->addAddress($_ENV['RECEIVER_EMAIL']);
+        $mail->setFrom("portfolio@geoffreyfranz.fr", "Portfolio - Geoffrey Franz");
+        $mail->addAddress("franz.geoffrey@hotmail.fr");
         $mail->addReplyTo($email, $name);
 
         // Contenu
