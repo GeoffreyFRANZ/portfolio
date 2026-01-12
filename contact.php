@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contact'])) {
         $mail->CharSet    = 'UTF-8';
 
         $mail->setFrom('portfolio@geoffreyfranz.fr', 'Portfolio - Geoffrey Franz');
-        $mail->addAddress('portfolio@geoffreyfranz.fr'); // Envoi à toi-même
+        $mail->addAddress('franz.geoffrey@hotmail.fr'); // Envoi à toi-même
         $mail->addReplyTo($email, $name);
 
         $mail->isHTML(true);
