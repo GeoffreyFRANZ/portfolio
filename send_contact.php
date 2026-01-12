@@ -1,30 +1,10 @@
 <?php
 session_start();
-
-// PROTECTION ANTI-ERREUR 500 : Affiche l'erreur réelle si le script crash
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-// Vérification de l'existence de l'autoloader
-if (!file_exists(__DIR__ . '/vendor/autoload.php')) {
-    die("Erreur Système : Le dossier 'vendor' est introuvable. Exécutez 'composer install'.");
-}
-
-require_once __DIR__ . '/vendor/autoload.php';
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use Dotenv\Dotenv;
 
 try {
-    // Chargement des variables d'environnement
-    if (file_exists(__DIR__ . '/.env')) {
-        $dotenv = Dotenv::createImmutable(__DIR__);
-        $dotenv->load();
-    } else {
-        throw new Exception("Fichier .env manquant à la racine.");
-    }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Nettoyage des données entrantes
@@ -40,17 +20,16 @@ try {
 
         // Configuration SMTP (Reprise de tes paramètres fonctionnels)
         $mail->isSMTP();
-        $mail->Host       = $_ENV['SMTP_HOST']; // smtp.hostinger.com
+        $mail->Host       = "smtp.hostinger.com";
         $mail->SMTPAuth   = true;
-        $mail->Username   = $_ENV['SMTP_USER']; // portfolio@geoffreyfranz.fr
-        $mail->Password   = $_ENV['SMTP_PASS']; // Tchouni.0102
+        $mail->Username   =  "portfolio@geoffreyfranz.fr";
+        $mail->Password   =  'Tchouni.0102';
         $mail->SMTPSecure = 'ssl';
-        $mail->Port       = (int)$_ENV['SMTP_PORT']; // 465
+        $mail->Port       =  465;
         $mail->CharSet    = 'UTF-8';
-
         // Destinataires
         $mail->setFrom($_ENV['SMTP_FROM'], $_ENV['SMTP_FROM_NAME']);
-        $mail->addAddress($_ENV['RECEIVER_EMAIL']); // franz.geoffrey@hotmail.fr
+        $mail->addAddress($_ENV['RECEIVER_EMAIL']);
         $mail->addReplyTo($email, $name);
 
         // Contenu
