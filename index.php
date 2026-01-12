@@ -1,557 +1,136 @@
-<?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require __DIR__ . '/vendor/autoload.php';
-
-$success = null;
-$error = null;
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    // Sécurisation des données
-    $name    = htmlspecialchars(trim($_POST['name']));
-    $email   = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
-    $message = htmlspecialchars(trim($_POST['message']));
-
-    if (!$email) {
-        $error = "Adresse email invalide.";
-    } else {
-        $mail = new PHPMailer(true);
-        try {
-            $mail->isSMTP();
-            $mail->Host = 'smtp.hostinger.com';
-            $mail->SMTPAuth = true;
-            $mail->Username = 'portfolio@geoffreyfranz.fr';
-            $mail->Password = 'Tchouni.0102';
-            $mail->SMTPSecure = 'ssl'; // ou 'ssl'
-            $mail->Port = 465;
-            $mail->CharSet = 'UTF-8';
-            $mail->isHTML(true);
-
-            // EXPÉDITEUR
-            $mail->setFrom('portfolio@geoffreyfranz.fr', 'Portfolio'); // identique aussi
-            $mail->addReplyTo('portfolio@geoffreyfranz.fr', 'Portfolio'); // optionnel
-            $mail->addAddress('franz.geoffrey@hotmail.fr'); //
-            // CONTENU
-            $mail->isHTML(true);
-            $mail->Subject = "Nouveau message depuis le portfolio";
-            $mail->Body    = "
-                <h2>Nouveau message reçu</h2>
-                <p><strong>Nom :</strong> {$name}</p>
-                <p><strong>Email :</strong> {$email}</p>
-                <p><strong>Message :</strong><br>{$message}</p>
-            ";
-            $mail->send();
-            $success = "Votre message a bien été envoyé.";
-        } catch (Exception $e) {
-            $error = "Erreur lors de l'envoi : " . $mail->ErrorInfo;
-        }
-    }
-}
-?>
 <!DOCTYPE html>
-<html lang="fr">
+<html class="dark" lang="fr">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Geoffrey Franz, développeur fullstack. Front, back, Docker, AWS et projets web
-     en production.">
-    <meta property="og:title" content="Geoffrey Franz — Développeur Fullstack">
-    <meta property="og:description" content="Développeur fullstack. Front, back, Docker, AWS et projets web en production.">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta name="description" content="Portfolio de Geoffrey Franz, développeur Fullstack en recherche d'alternance en IA avec Epitech. Découvrez mes projets et mon parcours.">
+    <meta name="keywords" content="Geoffrey Franz, Développeur Fullstack, IA, Intelligence Artificielle, Epitech, Alternance IA, React, Portfolio">
+
+    <title>Geoffrey Franz - Développeur Fullstack</title>
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://geoffreyfranz.fr">
-    <meta property="og:image" content="https://geoffreyfranz.fr/assets/img/og-image.png">
-    <meta property="og:locale" content="fr_FR">
-    <link rel="canonical" href="https://geoffreyfranz.fr/" />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.min.css">
-    <title>Geoffrey Franz — Développeur Back‑End PHP & Node.js</title>
+    <meta property="og:url" content="https://geoffreyfranz.fr/">
+    <meta property="og:title" content="Geoffrey Franz - Développeur Fullstack & IA (Alternance Epitech)">
+    <meta property="og:description" content="Développeur Fullstack passionné par l'IA, en quête d'une alternance avec Epitech. Explorez mon univers technologique.">
+    <meta property="og:image" content="https://geoffreyfranz.fr/og-image.jpg">
+
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="js/index-config.js"></script>
+    <link rel="stylesheet" href="styles/index.min.css">
 </head>
-<body>
-<div id="container">
-    <nav class="sidebar" aria-label="Navigation principale">
-        <div class="nav-links">
-            <a href="#" data-target="header">Introduction</a>
-            <a href="#" data-target="skills">Compétences</a>
-            <a href="#" data-target="projects">Projets</a>
-            <a href="CV.pdf" target="_blank">CV</a>
-            <a href="#" data-target="contact">Contact</a>
-        </div>
-    </nav>
-    <section id="header" class="section container active">
-        <header class="header-content">
-            <h1 class="header-title">Geoffrey FRANZ</h1>
-            <div class="holo-divider big" aria-hidden="true"></div>
-            <h2 class="header-tagline">
-                Développeur Web – en recherche d'alternance IA
-            </h2>
-        </header>
-        <article class="intro-content">
-            <div class="intro-layout">
-                <figure class="intro-figure">
-                    <img src="profil.png" alt="Portrait de Geoffrey Franz" class="intro-photo">
-                </figure>
-                <div class="intro-description">
-                    <h3>À propos</h3>
-                    <p>Je m’appelle <strong>Geoffrey Franz</strong>, développeur web avec une solide expérience sur des projets front et back. J’aime construire des applications claires, fiables et bien structurées, avec une attention particulière portée à l’expérience utilisateur et à la qualité du code.</p>
-                    <p>Aujourd’hui, je fais évoluer mon parcours vers <strong>l’intelligence artificielle</strong>. Je me forme activement aux concepts et aux outils modernes de l’IA afin d’enrichir mon profil de développeur et d’apporter une dimension plus intelligente et automatisée aux projets que je construis.</p>
-                    <p>Mon objectif est simple : combiner mes compétences web avec l’IA pour créer des solutions plus efficaces, plus utiles et plus ambitieuses.</p>
+<body class="bg-background-dark min-h-screen flex flex-col font-display text-white selection:bg-primary selection:text-white overflow-x-hidden">
+<div class="relative flex min-h-screen w-full flex-col overflow-hidden">
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0a1128] via-[#02040a] to-[#02040a]"></div>
+        <div class="absolute top-[-10%] left-[20%] w-[500px] h-[500px] bg-cyan-500/15 rounded-full blur-[120px] mix-blend-screen opacity-60"></div>
+        <div class="absolute bottom-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[100px] mix-blend-screen opacity-50"></div>
+        <div class="absolute top-[40%] left-[-10%] w-[400px] h-[400px] bg-blue-900/10 rounded-full blur-[100px] mix-blend-screen"></div>
+        <div class="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://placeholder.pics/svg/1920x1080/000000/FFFFFF')] bg-cover"></div>
+    </div>
+
+    <div class="relative z-10 flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap px-6 py-6 lg:px-12 w-full max-w-[1440px] mx-auto">
+            <a href="index.php" class="flex items-center gap-3 group" aria-label="Accueil Geoffrey Franz Systems">
+                <div class="flex items-center justify-center size-8 rounded-lg bg-white/5 border border-white/10 shadow-[0_0_15px_rgba(29,78,216,0.3)] group-hover:border-neon-cyan/50 transition-colors">
+                    <span class="material-symbols-outlined text-white text-lg" aria-hidden="true">all_inclusive</span>
                 </div>
+                <span class="text-white text-lg font-bold tracking-wider">GF_SYSTEMS</span>
+            </a>
+            <div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+                <nav class="flex items-center gap-8 bg-white/5 backdrop-blur-md px-6 py-2 rounded-full border border-white/10" aria-label="Navigation principale">
+                    <a class="text-white/70 hover:text-white hover:shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-all text-sm font-medium" href="project.php">Projets</a>
+                    <a class="text-white/70 hover:text-white hover:shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-all text-sm font-medium" href="about.php">À propos</a>
+                    <a class="text-white/70 hover:text-white hover:shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-all text-sm font-medium" href="contact.php">Contact</a>
+                </nav>
+                <a href="CV.pdf" class="relative group overflow-hidden rounded-lg bg-primary-blue/90 px-5 py-2 transition-all hover:bg-primary-blue hover:shadow-[0_0_20px_rgba(29,78,216,0.6)] inline-block">
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                    <span class="relative text-white text-sm font-bold tracking-wide">CV_V2.0</span>
+                </a>
             </div>
-        </article>
-        <article class="intro-text-block highlight-block">
-            <h3>Alternance IA – EPITECH</h3>
-            <p>Actuellement inscrit à <strong>EPITECH</strong> pour intégrer le bachelor, je recherche une alternance orientée <strong>IA</strong> afin de me spécialiser et d’apprendre au contact de projets concrets. Mon objectif est clair : rejoindre une équipe où je peux progresser, contribuer et monter en compétence sur des technologies d’intelligence artificielle à fort impact.</p>
-            <p>Si vous recherchez un profil sérieux, autonome, capable d’apprendre vite et de s’investir pleinement, je serais heureux d’échanger avec vous.</p>
-        </article>
-    </section>
-    <main>
-        <section id="skills" class="container">
-            <header>
-                <h2>Compétences</h2>
-                <div class="holo-divider small"></div>
-            </header>
-            <article>
-                <section class="skills-grid">
-                    <article class="concept-card">
-                        <h4>Back-end</h4>
-                        <ul>
-                            <li>PHP</li>
-                            <li>Symfony</li>
-                            <li>Node.js</li>
-                            <li>SQL</li>
-                            <li>API</li>
-                            <li>Sécurité & authentification (JWT, rôles)</li>
-                            <li>Tests & qualité (PHPUnit, clean code)</li>
-                        </ul>
-                    </article>
-                    <article class="concept-card">
-                        <h4>Front-end</h4>
-                        <ul>
-                            <li>Html</li>
-                            <li>Css</li>
-                            <li>Bootstrap</li>
-                            <li>React</li>
-                            <li>Javascript</li>
-                            <li>Intégration</li>
-                        </ul>
-                    </article>
-                    <article class="concept-card">
-                        <h4>Cloud/Devops</h4>
-                        <ul>
-                            <li>AWS (Lambda, S3, CloudFront, IAM)</li>
-                            <li>Microsoft Entra</li>
-                            <li>Docker</li>
-                            <li>Postman</li>
-                            <li>CI/CD (GitHub Actions)</li>
-                            <li>Monitoring & logs</li>
-                            <li>Déploiements automatisés</li>
-                        </ul>
-                    </article>
-                    <article class="concept-card">
-                        <h4>Soft Skill</h4>
-                        <ul>
-                            <li>Autonomie</li>
-                            <li>Organisation rigoureuse</li>
-                            <li>Communication claire</li>
-                            <li>Résolution de problèmes complexes</li>
-                            <li>Pensée critique & logique</li>
-                        </ul>
-                    </article>
-                </section>
-            </article>
-            <article>
-                <header>
-                    <h2 class="header-title">Montée en compétences</h2>
-                    <div class="holo-divider small"></div>
-                </header>
-                <h3 class="learning-block-title">les concepts du réseaux néuronal </h3>
-                <section class="skills-grid">
-                    <article class="concept-card">
-                        <h4>Neurone artificiel</h4>
-                        <p>Entrées → poids → somme → activation. C’est l’unité de base du réseau.</p>
-                    </article>
-                    <article class="concept-card">
-                        <h4>Poids & biais</h4>
-                        <p>Paramètres appris par le modèle. Les poids contrôlent l’influence,
-                            le biais décale la sortie.
-                        </p>
-                    </article>
-                    <article class="concept-card">
-                        <h4>Fonction d’activation</h4>
-                        <p>ReLU utilisée pour introduire de la non-linéarité et stabiliser l’apprentissage.</p>
-                    </article>
-                    <article class="concept-card">
-                        <h4>Forward pass</h4>
-                        <p>Calcul de la prédiction du réseau avant comparaison à la vérité terrain.</p>
-                    </article>
-                    <article class="concept-card">
-                        <h4>Backpropagation</h4>
-                        <p>Mécanisme d’ajustement des poids basé sur le gradient de la fonction de perte.</p>
-                    </article>
-                    <article class="concept-card">
-                        <h4>Fonction de perte</h4>
-                        <p>Mesure de l’erreur du modèle (MSE, Cross-Entropy selon la tâche).</p>
-                    </article>
-                    <article class="concept-card">
-                        <h4>Optimiseur</h4>
-                        <p>Algorithmes comme SGD ou Adam pour mettre à jour les poids efficacement.</p>
-                    </article> <article class="concept-card">
-                        <h4>Architecture dense</h4>
-                        <p>Réseau composé de couches fully connected (Dense), nombre de couches et de neurones
-                            par couche.</p>
-                    </article>
-                </section>
-            </article>
-            <article>
-                <header>
-                    <h3>Étape suivante de mon apprentissage</h3>
-                    <div class="holo-divider small"></div>
-                </header>
-                <section class="roadmap-steps">
-                    <article class="roadmap-step">
-                        <span class="step-tag">Étape 1</span>
-                        <h4>Premier MLP complet</h4>
-                        <p>Construire un réseau fully connected avec plusieurs couches denses et
-                            ReLU entre chaque couche.</p>
-                    </article>
-                    <article class="roadmap-step">
-                        <span class="step-tag">Étape 2</span>
-                        <h4>Pipeline d’entraînement</h4>
-                        <p>Mettre en place une boucle d’entraînement complète : forward, perte, backpropagation, optimisation.</p>
-                    </article>
-                    <article class="roadmap-step">
-                        <span class="step-tag">Étape 3</span>
-                        <h4>Projet concret</h4>
-                        <p>Entraîner ce MLP sur un dataset simple (ex : classification MNIST ou binaire) et analyser les résultats.</p>
-                    </article>
-                </section>
-            </article>
-        </section>
-        <section id="projects" class="container">
-            <header class="projects-header">
-                <h2>Projets</h2>
-                <div class="holo-divider small"></div>
-            </header>
-            <article>
-                <header class="project-header">
-                    <h3>Plateforme de gestion des intervenants – FEDE</h3>
-                    <a class="project-link" href="https://intervenants.fede.education" target="_blank">
-                        https://intervenants.fede.education
-                    </a>
-                </header>
-                <section class="project-content">
-                    <figure>
-                        <img src="form-step1.png" alt="Formulaire intervenants – Étape 1">
-                    </figure>
-                    <article class="project-story">
-                        <h4>Présentation du projet</h4>
-                        <p>
-                            J’ai développé une plateforme complète permettant de gérer les candidatures des intervenants
-                            de la Fédération Européenne des Écoles. Ce projet s’inscrit au cœur du système d’information
-                            de la FEDE : il centralise les demandes, automatise les validations et crée les comptes
-                            intervenants directement dans Microsoft Entra (Azure AD), afin de permettre l’accès aux
-                            différentes applications internes.
-                        </p>
-                        <p>
-                            Le système repose sur un formulaire multi‑étapes avancé, un workflow métier structuré,
-                            un audit log détaillé, une gestion fine des rôles et des permissions, ainsi qu’une intégration
-                            profonde avec les services Microsoft (Entra, SharePoint) et les services AWS déjà en place.
-                            Les documents (CV, pièces justificatives) sont automatiquement envoyés dans SharePoint,
-                            tandis que les comptes intervenants sont créés et configurés via l’API Entra.
-                        </p>
-                        <p>
-                            Ce projet a été réalisé en autonomie quasi totale, en collaboration directe avec les équipes
-                            pédagogiques et administratives. J’ai conçu l’architecture, développé le front et le back,
-                            mis en place les intégrations cloud, sécurisé les endpoints, et déployé l’ensemble sur le VPS OVH
-                            via un environnement Docker. Le résultat est une application robuste, maintenable et utilisée
-                            quotidiennement pour gérer les intervenants du réseau FEDE.
-                        </p>
-                    </article>
-                    <article class="project-features">
-                        <section>
-                            <h4>Frontend</h4>
-                            <ul>
-                                <li>Twig + JavaScript pur</li>
-                                <li>Formulaire multi‑étapes dynamique (validation progressive)</li>
-                                <li>Affichage intelligent des catégories de matières</li>
-                                <li>Gestion des rôles intervenants (UI dédiée)</li>
-                                <li>Récapitulatif complet avant validation</li>
-                                <li>UX claire, structurée et pensée pour les équipes pédagogiques</li>
-                            </ul>
-                        </section>
-                        <section>
-                            <h4>Infra & Cloud</h4>
-                            <ul>
-                                <li>Déploiement sur VPS OVH</li>
-                                <li>Environnement Docker (multi‑services)</li>
-                                <li>Microsoft Entra (authentification + provisioning utilisateurs)</li>
-                                <li>SharePoint (stockage documentaire)</li>
-                                <li>Intégration AWS Lambda / SQS pour les tâches asynchrones</li>
-                                <li>Gestion des permissions et sécurité des endpoints</li>
-                            </ul>
-                        </section>
-                        <section>
-                            <h4>Backend</h4>
-                            <ul>
-                                <li>Workflow multi‑étapes (soumission → validation → création compte)</li>
-                                <li>SQL : candidatures + pièces jointes</li>
-                                <li>Provisioning automatique via Microsoft Entra (Azure AD)</li>
-                                <li>Rôles & permissions dynamiques</li>
-                                <li>Endpoints sécurisés (intégrations internes)</li>
-                                <li>Statuts : à traiter / accepté / refusé / modifié</li>
-                                <li>Audit log complet (actions & transitions)</li>
-                                <li>SharePoint : stockage CV & documents</li>
-                                <li>AWS : Lambda / SQS (automatisations)</li>
-                            </ul>
-                        </section>
-                    </article>
-                </section>
-            </article>
-            <article>
-                <header class="project-header">
-                    <h3>Générations de PDF  – FEDE</h3>
-                </header>
-                <section class="project-content">
-                    <article class="project-story">
-                        <h4>Présentation du projet</h4>
-                        <p>
-                            J’ai développé un service complet de génération de documents PDF automatisés pour la Fédération
-                            Européenne des Écoles. L’objectif était de produire des documents complexes à partir de données
-                            métier, avec une mise en page dynamique, des sections conditionnelles, des tableaux, des fusions
-                            de pages et une pagination intelligente.
-                        </p>
-                        <p>
-                            Le cœur du système repose sur une Lambda AWS écrite en Python, utilisant ReportLab pour la
-                            génération programmatique et PyPDF2 pour la fusion et la manipulation des pages. Le service
-                            récupère les données, construit le document, applique les règles métier, puis stocke le PDF
-                            final dans un bucket S3 via des URLs pré‑signées.
-                        </p>
-                        <p>
-                            Ce projet m’a demandé d’apprendre rapidement un nouvel environnement technique, de comprendre
-                            un workflow métier complet et de livrer un outil fiable utilisé quotidiennement par les équipes
-                            internes. J’ai travaillé en autonomie guidée : accompagné lorsque nécessaire, mais responsable
-                            de l’analyse et de l’implémentation du service, ainsi que de son intégration avec l’intranet
-                            existant.
-                        </p>
-                        <p>
-                            Le résultat est un service robuste, maintenable et automatisé, qui a permis de réduire
-                            significativement le temps de production documentaire tout en améliorant la qualité et la
-                            cohérence des documents générés.
-                        </p>
-                    </article>
-                    <article class="project-features">
-                        <section>
-                            <h4>Frontend</h4>
-                            <ul>
-                                <li>Interface interne pour déclencher la génération</li>
-                                <li>Formulaire de sélection des données à intégrer</li>
-                                <li>Affichage des documents générés</li>
-                                <li>Intégration dans l’écosystème FEDE existant</li>
-                            </ul>
-                        </section>
-                        <section>
-                            <h4>Infra & Cloud</h4>
-                            <ul>
-                                <li>AWS Lambda (serverless)</li>
-                                <li>AWS S3 (stockage des PDF)</li>
-                                <li>IAM (permissions minimales)</li>
-                                <li>CloudWatch (logs & monitoring)</li>
-                                <li>Intégration avec les API internes FEDE</li>
-                                <li>Déploiement automatisé via pipeline interne</li>
-                            </ul>
-                        </section>
-                        <section>
-                            <h4>Backend</h4>
-                            <ul>
-                                <li>Lambda AWS en Python</li>
-                                <li>Génération PDF avancée (ReportLab)</li>
-                                <li>Fusion et manipulation de pages (PyPDF2)</li>
-                                <li>Règles métier complexes (sections conditionnelles)</li>
-                                <li>Pagination dynamique</li>
-                                <li>Stockage S3 via presigned URLs</li>
-                                <li>Gestion des erreurs et logs structurés</li>
-                                <li>Documentation technique complète</li>
-                            </ul>
-                        </section>
-                    </article>
-                </section>
-            </article>
-            <article>
-                <header class="project-header">
-                    <h3>Equivalences – FEDE</h3>
-                    <a class="project-link" href="https://equivalences.fede.education" target="_blank">
-                        https://equivalences.fede.education
-                    </a>
-                </header>
-                <section class="project-content">
-                    <figure>
-                        <img src="img.png" alt="Formulaire intervenants – Étape 1">
-                    </figure>
-                    <article class="project-story">
-                        <h4>Présentation du projet</h4>
-                        <p>
-                            J’ai développé une plateforme complète permettant de gérer les candidatures des intervenants
-                            de la Fédération Européenne des Écoles. Ce projet s’inscrit au cœur du système d’information
-                            de la FEDE : il centralise les demandes, automatise les validations et crée les comptes
-                            intervenants directement dans Microsoft Entra (Azure AD), afin de permettre l’accès aux
-                            différentes applications internes.
-                        </p>
-                        <p>
-                            Le système repose sur un formulaire multi‑étapes avancé, un workflow métier structuré,
-                            un audit log détaillé, une gestion fine des rôles et des permissions, ainsi qu’une intégration
-                            profonde avec les services Microsoft (Entra, SharePoint) et les services AWS déjà en place.
-                            Les documents (CV, pièces justificatives) sont automatiquement envoyés dans SharePoint,
-                            tandis que les comptes intervenants sont créés et configurés via l’API Entra.
-                        </p>
-                        <p>
-                            Ce projet a été réalisé en autonomie quasi totale, en collaboration directe avec les équipes
-                            pédagogiques et administratives. J’ai conçu l’architecture, développé le front et le back,
-                            mis en place les intégrations cloud, sécurisé les endpoints, et déployé l’ensemble sur le VPS OVH
-                            via un environnement Docker. Le résultat est une application robuste, maintenable et utilisée
-                            quotidiennement pour gérer les intervenants du réseau FEDE.
-                        </p>
-                    </article>
-                    <article class="project-features">
-                        <section>
-                            <h4>Frontend</h4>
-                            <ul>
-                                <li>Twig + JavaScript pur</li>
-                                <li>Formulaire multi‑étapes dynamique (validation progressive)</li>
-                                <li>Affichage intelligent des catégories de matières</li>
-                                <li>Gestion des rôles intervenants (UI dédiée)</li>
-                                <li>Récapitulatif complet avant validation</li>
-                                <li>UX claire, structurée et pensée pour les équipes pédagogiques</li>
-                            </ul>
-                        </section>
-                        <section>
-                            <h4>Infra & Cloud</h4>
-                            <ul>
-                                <li>Déploiement sur VPS OVH</li>
-                                <li>Environnement Docker (multi‑services)</li>
-                                <li>Microsoft Entra (authentification + provisioning utilisateurs)</li>
-                                <li>SharePoint (stockage documentaire)</li>
-                                <li>Intégration AWS Lambda / SQS pour les tâches asynchrones</li>
-                                <li>Gestion des permissions et sécurité des endpoints</li>
-                            </ul>
-                        </section>
-                        <section>
-                            <h4>Backend</h4>
-                            <ul>
-                                <li>Workflow multi‑étapes (soumission → validation → création compte)</li>
-                                <li>SQL : candidatures + pièces jointes</li>
-                                <li>Provisioning automatique via Microsoft Entra (Azure AD)</li>
-                                <li>Rôles & permissions dynamiques</li>
-                                <li>Endpoints sécurisés (intégrations internes)</li>
-                                <li>Statuts : à traiter / accepté / refusé / modifié</li>
-                                <li>Audit log complet (actions & transitions)</li>
-                                <li>SharePoint : stockage CV & documents</li>
-                                <li>AWS : Lambda / SQS (automatisations)</li>
-                            </ul>
-                        </section>
-                    </article>
-                </section>
-            </article>
-        </section>
-        <section id="contact" class="container">
-            <?php if ($success): ?>
-                <div class="alert success"><?= $success ?></div>
-            <?php endif; ?>
+            <div class="md:hidden">
+                <button class="text-white p-2" aria-label="Ouvrir le menu">
+                    <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+                </button>
+            </div>
+        </header>
+        <main class="flex flex-1 flex-col items-center justify-center px-4 md:px-10 py-12 relative w-full max-w-[1440px] mx-auto">
+            <section id="work" class="layout-content-container flex flex-col max-w-[960px] items-center text-center gap-8 relative">
+                <div class="animate-float" style="animation-duration: 5s;">
+                    <div class="inline-flex items-center gap-x-2 rounded-full bg-white/5 backdrop-blur-md pl-2 pr-4 py-1.5 border border-neon-cyan/20 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
+                        <span class="relative flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-cyan opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-neon-cyan"></span>
+                        </span>
+                        <p class="text-white text-xs font-medium tracking-wide uppercase">Recherche d'Alternance IA avec Epitech</p>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-4 relative z-10">
+                    <h1 class="text-white text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tighter drop-shadow-2xl">
+                        <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-gray-200 to-gray-500">GEOFFREY</span><br>
+                        <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-gray-300 to-gray-600">FRANZ</span>
+                    </h1>
+                    <hr class="h-[1px] w-32 bg-gradient-to-r from-transparent via-primary-blue to-transparent mx-auto my-2" aria-hidden="true">
+                    <p class="text-xl md:text-2xl font-light tracking-widest text-gray-300">
+                        DÉVELOPPEUR <span class="text-primary-blue font-medium">FULLSTACK</span> &amp; ASPIRANT <span class="text-neon-cyan font-medium">EXPERT IA</span>
+                    </p>
+                    <p class="mt-4 text-gray-400 max-w-lg mx-auto text-base md:text-lg font-body leading-relaxed">
+                        Développeur Fullstack confirmé, je me spécialise aujourd'hui dans l'Intelligence Artificielle. En recherche d'une alternance avec Epitech pour fusionner ingénierie logicielle et modèles neuronaux.
+                    </p>
+                </div>
 
-            <?php if ($error): ?>
-                <div class="alert error"><?= $error ?></div>
-            <?php endif; ?>
-            <form action="" method="POST" class="contact-form">
-                <div class="form-group">
-                    <label for="name">Nom</label>
-                    <input type="text" id="name" name="name" required />
+                <nav class="flex flex-wrap gap-4 justify-center mt-6" aria-label="Actions rapides">
+                    <a href="project.php" class="flex min-w-[160px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary-blue text-white text-base font-bold shadow-[0_0_20px_rgba(29,78,216,0.4)] hover:shadow-[0_0_30px_rgba(29,78,216,0.6)] hover:-translate-y-0.5 transition-all duration-300 border border-white/10">
+                        <span class="mr-2 material-symbols-outlined text-sm" aria-hidden="true">rocket_launch</span>
+                        <span>Voir mes projets</span>
+                    </a>
+                    <a href="contact.php" class="flex min-w-[160px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-white/5 backdrop-blur-md text-white text-base font-bold border border-white/10 hover:bg-white/10 hover:border-neon-cyan/50 transition-all duration-300 group">
+                        <span class="truncate">Me contacter</span>
+                        <span class="ml-2 material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform" aria-hidden="true">arrow_forward</span>
+                    </a>
+                </nav>
+
+                <div class="mt-16 w-full">
+                    <ul class="flex flex-wrap justify-center gap-4 md:gap-8 opacity-80 hover:opacity-100 transition-opacity">
+                        <li class="flex flex-col items-center gap-2 group cursor-default" title="Architecture de Code">
+                            <div class="rounded-full bg-white/5 p-3 border border-white/5 group-hover:border-primary-blue/50 group-hover:shadow-[0_0_15px_rgba(29,78,216,0.3)] transition-all duration-300">
+                                <span class="material-symbols-outlined text-gray-400 group-hover:text-white" style="font-size: 24px;">code</span>
+                            </div>
+                            <span class="text-[10px] uppercase tracking-widest text-gray-500 font-bold group-hover:text-primary-blue transition-colors">Code</span>
+                        </li>
+                        <li class="flex flex-col items-center gap-2 group cursor-default" title="Intelligence Artificielle">
+                            <div class="rounded-full bg-white/5 p-3 border border-white/5 group-hover:border-neon-cyan/50 group-hover:shadow-[0_0_15px_rgba(6,182,212,0.3)] transition-all duration-300">
+                                <span class="material-symbols-outlined text-gray-400 group-hover:text-white" style="font-size: 24px;">neurology</span>
+                            </div>
+                            <span class="text-[10px] uppercase tracking-widest text-gray-500 font-bold group-hover:text-neon-cyan transition-colors">AI/ML</span>
+                        </li>
+                        <li class="flex flex-col items-center gap-2 group cursor-default" title="DevOps & Infrastructure">
+                            <div class="rounded-full bg-white/5 p-3 border border-white/5 group-hover:border-white/50 group-hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all duration-300">
+                                <span class="material-symbols-outlined text-gray-400 group-hover:text-white" style="font-size: 24px;">terminal</span>
+                            </div>
+                            <span class="text-[10px] uppercase tracking-widest text-gray-500 font-bold group-hover:text-white transition-colors">DevOps</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required />
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="btn">Envoyer</button>
-        </section>
-    </main>
+            </section>
+        </main>
+
+        <footer class="absolute bottom-6 left-0 right-0 px-6 flex justify-between items-end pointer-events-none opacity-20 hover:opacity-100 transition-opacity">
+            <address class="text-[10px] text-white font-mono hidden md:block not-italic">
+                COORDS: 45.92° N, 12.34° E <br/>
+                SECURE_CONNECTION: TRUE
+            </address>
+            <div class="text-[10px] text-white font-mono hidden md:block text-right">
+                VERSION 3.0.1 <br/>
+                <time datetime="2026-01-10">LAST_UPDATE: 2026-01-10</time>
+            </div>
+        </footer>
+    </div>
 </div>
-<script src="scripts.min.js"></script>
-<script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Geoffrey",
-        "jobTitle": "Développeur Back-End",
-        "url": "https://geoffreyfranz.fr",
-        "sameAs": [
-            "https://github.com/ton-profil",
-            "https://www.linkedin.com/in/ton-profil"
-        ]
-    }
-</script>
-
-<script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "Person",
-                "@id": "https://geoffreyfranz.fr/person",
-                "name": "Geoffrey",
-                "jobTitle": "Développeur Back-End",
-                "url": "https://geoffreyfranz.fr",
-                "sameAs": [
-                    "https://github.com/ton-profil",
-                    "https://www.linkedin.com/in/ton-profil"
-                ]
-            },
-            {
-                "@type": "WebSite",
-                "@id": "https://geoffreyfranz.fr/website",
-                "url": "https://geoffreyfranz.fr",
-                "name": "Portfolio de Geoffrey",
-                "publisher": { "@id": "https://geoffreyfranz.fr/person" }
-            },
-            {
-                "@type": "WebPage",
-                "@id": "https://geoffreyfranz.fr/page",
-                "url": "https://geoffreyfranz.fr",
-                "name": "Portfolio de Geoffrey",
-                "isPartOf": { "@id": "https://geoffreyfranz.fr/website" },
-                "about": { "@id": "https://geoffreyfranz.fr/person" },
-                "hasPart": [
-                    {
-                        "@type": "WebPageElement",
-                        "name": "Introduction"
-                    },
-                    {
-                        "@type": "WebPageElement",
-                        "name": "Projects"
-                    },
-                    {
-                        "@type": "WebPageElement",
-                        "name": "Skills"
-                    },
-                    {
-                        "@type": "WebPageElement",
-                        "name": "Contact"
-                    }
-                ]
-            },
-            {
-                "@type": "CreativeWork",
-                "@id": "https://geoffreyfranz.fr/projet-fede",
-                "name": "Projet FEDE",
-                "description": "Développement back-end, front-end et infrastructure pour la Fédération Européenne des Écoles.",
-                "creator": { "@id": "https://geoffreyfranz.fr/person" },
-                "keywords": ["Symfony", "React", "AWS", "Docker"]
-            }
-        ]
-    }
-</script>
 </body>
 </html>

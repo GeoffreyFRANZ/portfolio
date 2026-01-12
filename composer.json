@@ -1,6 +1,14 @@
 {
+    "name": "geoffrey/portfolio-v2",
+    "description": "Portfolio V2",
+    "authors": [
+        {
+            "name": "Geoffrey Franz",
+            "email": "geo@franz.dev"
+        }
+    ],
     "require": {
         "phpmailer/phpmailer": "^7.0",
-      "ext-json": "*"
+        "vlucas/phpdotenv": "^5.6"
     }
 }
