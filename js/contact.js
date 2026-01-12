@@ -17,7 +17,7 @@ document.getElementById('contact-form')?.addEventListener('submit', async functi
     const formData = new FormData(form);
     
     try {
-        const response = await fetch('../send_contact.php', {
+        const response = await fetch('send_contact.php', {
             method: 'POST',
             body: formData
         });
@@ -38,11 +38,5 @@ document.getElementById('contact-form')?.addEventListener('submit', async functi
         statusDiv.classList.remove('hidden');
         statusDiv.textContent = "Une erreur système critique est survenue lors de la transmission.";
         statusDiv.classList.add('bg-red-500/20', 'text-red-400', 'border', 'border-red-500/50');
-    } finally {
-        submitBtn.disabled = false;
-        btnText.textContent = 'Transmettre le Message';
-        btnIcon.textContent = 'send';
-        btnIcon.classList.remove('animate-spin');
-        btnIcon.classList.add('animate-pulse');
     }
 });
