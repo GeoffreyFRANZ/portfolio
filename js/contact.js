@@ -17,7 +17,7 @@ document.getElementById('contact-form')?.addEventListener('submit', async functi
     const formData = new FormData(form);
     
     try {
-        const response = await fetch('send_contact.php', {
+        const response = await fetch('../send_contact.php', {
             method: 'POST',
             body: formData
         });
