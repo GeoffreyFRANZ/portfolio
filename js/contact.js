@@ -10,7 +10,7 @@ document.getElementById('contact-form')?.addEventListener('submit', async functi
     // État de chargement
     submitBtn.disabled = true;
     btnText.textContent = 'Transmission en cours...';
-    btnIcon.textContent = 'sync';
+    // btnIcon.textContent = 'sync';
     btnIcon.classList.add('animate-spin');
     btnIcon.classList.remove('animate-pulse');
     
