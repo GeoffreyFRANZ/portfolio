@@ -31,9 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->SMTPAuth   = true;
         $mail->Username   = $_ENV['SMTP_USER'];
         $mail->Password   = $_ENV['SMTP_PASS'];
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->SMTPSecure = 'ssl';
         $mail->Port       = $_ENV['SMTP_PORT'];
         $mail->CharSet    = 'UTF-8';
+        $mail->isHTML(true);
 
         // Destinataires
         $mail->setFrom($_ENV['SMTP_FROM'], $_ENV['SMTP_FROM_NAME']);
