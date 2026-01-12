@@ -11,8 +11,8 @@ document.getElementById('contact-form')?.addEventListener('submit', async functi
     submitBtn.disabled = true;
     btnText.textContent = 'Transmission en cours...';
     // btnIcon.textContent = 'sync';
-    btnIcon.classList.add('animate-spin');
-    btnIcon.classList.remove('animate-pulse');
+    // btnIcon.classList.add('animate-spin');
+    // btnIcon.classList.remove('animate-pulse');
     
     const formData = new FormData(form);
     
