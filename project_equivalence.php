@@ -79,8 +79,11 @@
             <span class="font-bold text-lg tracking-tight text-white uppercase">Geoffrey Franz</span>
         </a>
         <nav class="hidden md:flex items-center gap-8">
-            <a class="text-sm font-medium text-secondary hover:text-white transition-colors" href="#">Projets</a>
-            <a class="px-5 py-2 text-sm font-medium text-white bg-blue-600/10 border border-blue-500/50 rounded-full hover:bg-blue-600/20 transition-all" href="#">Contact</a>
+            <a class="text-gray-300 hover:text-white text-sm font-medium transition-colors" href="index.php">Accueil</a>
+            <a class="text-white text-sm font-bold border-b-2 border-primary pb-1" href="project.php">Projets</a>
+            <a class="text-gray-300 hover:text-white text-sm font-medium transition-colors" href="supports.php">Cours</a>
+            <a class="text-gray-300 hover:text-white text-sm font-medium transition-colors" href="about.php">À propos</a>
+            <a class="text-gray-300 hover:text-white text-sm font-medium transition-colors" href="contact.php">Contact</a>
         </nav>
     </div>
 </header>

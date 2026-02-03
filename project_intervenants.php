@@ -81,6 +81,7 @@
         <nav class="hidden md:flex items-center gap-8">
             <a class="text-gray-300 hover:text-white text-sm font-medium transition-colors" href="index.php">Accueil</a>
             <a class="text-white text-sm font-bold border-b-2 border-primary pb-1" href="project.php">Projets</a>
+            <a class="text-gray-300 hover:text-white text-sm font-medium transition-colors" href="supports.php">Cours</a>
             <a class="text-gray-300 hover:text-white text-sm font-medium transition-colors" href="about.php">À propos</a>
             <a class="text-gray-300 hover:text-white text-sm font-medium transition-colors" href="contact.php">Contact</a>
         </nav>

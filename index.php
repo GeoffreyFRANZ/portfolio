@@ -45,6 +45,7 @@
             <div class="hidden md:flex flex-1 justify-end gap-8 items-center">
                 <nav class="flex items-center gap-8 bg-white/5 backdrop-blur-md px-6 py-2 rounded-full border border-white/10" aria-label="Navigation principale">
                     <a class="text-white/70 hover:text-white hover:shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-all text-sm font-medium" href="project.php">Projets</a>
+                    <a class="text-white/70 hover:text-white hover:shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-all text-sm font-medium" href="supports.php">Cours</a>
                     <a class="text-white/70 hover:text-white hover:shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-all text-sm font-medium" href="about.php">À propos</a>
                     <a class="text-white/70 hover:text-white hover:shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-all text-sm font-medium" href="contact.php">Contact</a>
                 </nav>
