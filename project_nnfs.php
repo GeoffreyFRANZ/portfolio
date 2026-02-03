@@ -71,7 +71,6 @@
         </a>
         <nav class="hidden md:flex items-center gap-8">
             <a class="text-sm font-medium text-secondary hover:text-white transition-colors" href="project.php">Projets</a>
-            <a class="text-sm font-medium text-secondary hover:text-white transition-colors" href="#">Parcours IA</a>
             <a class="px-5 py-2 text-sm font-medium text-white bg-blue-600/10 border border-blue-500/50 rounded-full hover:bg-blue-600/20 transition-all" href="#">Contact</a>
         </nav>
     </div>
