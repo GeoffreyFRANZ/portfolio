@@ -132,12 +132,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contact'])) {
                         <span class="material-symbols-outlined text-primary">hub</span> Canaux Directs
                     </h2>
                     <div class="space-y-4">
-                        <a href="https://linkedin.com/in/geoffreyfranz" target="_blank" class="flex items-center gap-4 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
+                        <a href="https://www.linkedin.com/in/geoffrey-franz-134688149/" target="_blank" class="flex items-center gap-4 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
                             <div class="size-10 rounded-lg bg-background-dark border border-white/10 flex items-center justify-center text-secondary group-hover:text-primary transition-colors">
                                 <span class="material-symbols-outlined">badge</span>
                             </div>
                             <div>
                                 <h3 class="text-white font-bold text-sm">LinkedIn</h3>
+                                <p class="text-xs text-secondary">Geoffrey Franz</p>
+                            </div>
+                        </a>
+                        <a href="https://github.com/GeoffreyFRANZ" target="_blank" class="flex items-center gap-4 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
+                            <div class="size-10 rounded-lg bg-background-dark border border-white/10 flex items-center justify-center text-secondary group-hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined">badge</span>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold text-sm">Github</h3>
                                 <p class="text-xs text-secondary">Geoffrey Franz</p>
                             </div>
                         </a>
