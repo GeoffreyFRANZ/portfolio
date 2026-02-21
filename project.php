@@ -46,12 +46,12 @@
         <nav class="hidden md:flex items-center gap-8">
             <a class="text-gray-300 hover:text-white text-sm font-medium transition-colors" href="index.php">Accueil</a>
             <a class="text-white text-sm font-bold border-b-2 border-primary pb-1" href="project.php">Projets</a>
+            <a class="text-gray-300 hover:text-white text-sm font-medium transition-colors" href="supports.php">Cours</a>
             <a class="text-gray-300 hover:text-white text-sm font-medium transition-colors" href="about.php">À propos</a>
             <a class="text-gray-300 hover:text-white text-sm font-medium transition-colors" href="contact.php">Contact</a>
         </nav>
     </div>
 </header>
-
 <main class="relative z-10 flex-grow flex flex-col items-center w-full">
     <section class="w-full max-w-[1200px] px-6 py-16 md:py-24 flex flex-col items-center text-center">
         <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-500">
